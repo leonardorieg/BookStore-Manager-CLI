@@ -1,4 +1,5 @@
 import { AutoresService } from "../services/autoresService.js";
+import { mostrarErro } from '../errors/error.js';
 
 export class AutoresController {
     constructor(private readonly autoresService: AutoresService) {
@@ -20,9 +21,7 @@ export class AutoresController {
             console.log(autor); //todo melhorar impressão
 
         } catch (erro) {
-            if (erro instanceof Error) {
-                console.log(`[ERRO] - ${erro.message}`);
-            }
+            mostrarErro(erro)
         }
     }
     async inserir(nome: string): Promise<void> {
@@ -30,9 +29,7 @@ export class AutoresController {
             const resultado = await this.autoresService.inserir(nome);
             console.log(`[OK] - ${resultado}`);
         } catch (erro) {
-            if (erro instanceof Error) {
-                console.log(`[ERRO] - ${erro.message}`);
-            }
+            mostrarErro(erro)
         }
 
     }
@@ -43,9 +40,7 @@ export class AutoresController {
             console.log(`[OK] - ${resultado}`);
 
         } catch (erro) {
-            if (erro instanceof Error) {
-                console.log(`[ERRO] - ${erro.message}`);
-            }
+            mostrarErro(erro)
         }
 
     }
@@ -56,9 +51,7 @@ export class AutoresController {
             console.log(`[OK] - ${resposta}`);
 
         } catch (erro) {
-            if (erro instanceof Error) {
-                console.log(`[ERRO] - ${erro.message}`);
-            }
+            mostrarErro(erro)
         }
 
     }
