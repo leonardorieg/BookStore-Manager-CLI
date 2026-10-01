@@ -20,8 +20,9 @@ export class AutoresService {
         }
 
         const resposta = await this.autoresRepository.buscarPorId(id);
+
         if(resposta === null){
-            return 'Nenhum autor encontrado com esse ID';
+            throw new Error(`Nenhum autor encontrado com o ID:${id}`);
         }
         return resposta;
     }
